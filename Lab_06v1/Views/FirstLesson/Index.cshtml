@@ -1,0 +1,39 @@
+﻿@model Lab_06v1.App_Start.EntitiesContext
+
+@{
+    ViewBag.Title = "Queue to the First Lesson";
+}
+
+    <h2>@ViewBag.Title.</h2>
+
+
+<body>
+    @using (Html.BeginForm("RemoveFromTheQueue", "FirstLesson"))
+    {
+        <table>
+            <tr>
+                <th># in queue</th>
+                <th>first name</th>
+                <th>second name</th>
+            </tr>
+            @foreach (var student in Model.Students.ToList())
+            {
+                <tr>
+                    <td>@student.possitionInQueue <input type="checkbox" name="check" value="@student.possitionInQueue"></td>
+                    <td>@student.firstName</td>
+                    <td>@student.secondName</td>
+                </tr>
+            }
+        </table>
+        <input type="submit" value="Delete" />
+    }
+
+    @using (Html.BeginForm("AddToTheQueue", "FirstLesson"))
+    {
+        <label>first name of a student</label>
+        <input type="text" name="firstName" id="firstName" value="" />
+        <label>second name of a student</label>
+        <input type="text" name="secondName" id="firstName" value="" />
+        <input type="submit" value="Add to the end of the queue" />
+    }
+</body>

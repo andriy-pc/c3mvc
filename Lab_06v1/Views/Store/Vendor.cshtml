@@ -1,0 +1,51 @@
+﻿@model Lab_06v1.App_Start.EntitiesContext
+
+@{
+    ViewBag.Title = "Store page";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+<body>
+    @using (Html.BeginForm("Remove", "Vendor"))
+    {
+        <table style="width: 100%">
+            <tr>
+                <th>id</th>
+                <th>vendor name</th>
+                <th>productsType</th>
+            </tr>
+            @foreach (var vendor in Model.Vendors.ToList())
+            {
+                <tr>
+                    <td>@vendor.id <input type="checkbox" name="check" value="@vendor.id"></td>
+                    <td>@vendor.vendorName</td>
+                    <td>@vendor.productsType</td>
+                </tr>
+            }
+        </table>
+        <h6>delete vendor</h6>
+        <input type="submit" value="Vendor" />
+    }
+
+    @using (Html.BeginForm("Add", "Vendor"))
+    {
+        <h6>Insert new store</h6>
+        <label>c=vendor's name</label>
+        <input type="text" name="name" id="vendorName" value="" />
+        <label>location</label>
+        <input type="text" name="type" id="productsType" value="" />
+        <input type="submit" value="Add to the DB" />
+    }
+
+    @using (Html.BeginForm("Update", "Vendor"))
+    {
+        <h6>Update vendor</h6>
+        <label>c=vendor's name</label>
+        <input type="text" name="name" id="vendorName" value="" />
+        <label>location</label>
+        <input type="text" name="type" id="productsType" value="" />
+        <input type="submit" value="Add to the DB" />
+    }
+</body>

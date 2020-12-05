@@ -14,7 +14,7 @@ namespace Lab_06v1
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new CustomDbInitializer());
+            //Database.SetInitializer(new CustomDbInitializer());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

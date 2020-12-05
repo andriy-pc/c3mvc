@@ -19,6 +19,9 @@ namespace Lab_06v1.App_Start
             //throw new UnintentionalCodeFirstException();
         }
 
-        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Salesman> Salesmens { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<Vendor> Vendors { get; set; }
     }
 }

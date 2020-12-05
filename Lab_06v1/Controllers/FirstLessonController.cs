@@ -41,8 +41,8 @@ namespace Lab_06v1.Controllers
         private void RemoveStudentFromDB(int possitionInQueue)
         {
             Student s = new Models.Student(possitionInQueue);
-            context.Students.Attach(s);
-            context.Students.Remove(s);
+            //context.Students.Attach(s);
+            //context.Students.Remove(s);
         }
 
         [HttpPost]
@@ -74,7 +74,16 @@ namespace Lab_06v1.Controllers
 
             if(newStudentFirstName != null && newStudentSecondName != null)
             {
-                AddNewStudentToTheQueue(newStudentFirstName.ToString(), newStudentSecondName.ToString());
+                string firstName = newStudentFirstName.ToString();
+                string secondName = newStudentSecondName.ToString();
+                if (firstName.Length != 0 && secondName.Length != 0)
+                {
+                    AddNewStudentToTheQueue(firstName, secondName);
+                }
+                else
+                {
+                    return RedirectToAction("Error", "FirstLesson", new { errorMessage = "Please insert first and second name of the student" });
+                }
             }
             else
             {
@@ -86,7 +95,7 @@ namespace Lab_06v1.Controllers
         private void AddNewStudentToTheQueue(string firstName, string secondName)
         {
             Student s = new Models.Student(firstName, secondName);
-            context.Students.Add(s);
+            //context.Students.Add(s);
             context.SaveChanges();
         }
     }

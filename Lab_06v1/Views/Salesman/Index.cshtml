@@ -1,0 +1,53 @@
+﻿@model Lab_06v1.App_Start.EntitiesContext
+
+@{
+    ViewBag.Title = "Salesman page";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+
+<body>
+    @using (Html.BeginForm("Remove", "Salesman"))
+    {
+        <table style="width: 100%">
+            <tr>
+                <th>id</th>
+                <th>produt name</th>
+                <th>second name</th>
+            </tr>
+            @foreach (var salesman in Model.Salesmens.ToList())
+            {
+                <tr>
+                    <td>@salesman.id <input type="checkbox" name="check" value="@salesman.id"></td>
+                    <td>@salesman.firstName</td>
+                    <td>@salesman.secondName</td>
+                </tr>
+            }
+        </table>
+        <h6>delete salesman</h6>
+        <input type="submit" value="Delete" />
+    }
+
+    @using (Html.BeginForm("Add", "Salesman"))
+    {
+        <h6>Insert new salesman</h6>
+        <label>first name of a salesman</label>
+        <input type="text" name="firstName" id="firstName" value="" />
+        <label>second name of a student</label>
+        <input type="text" name="secondName" id="firstName" value="" />
+        <input type="submit" value="Add to the DB" />
+    }
+
+    @using (Html.BeginForm("Update", "Salesman"))
+    {
+        <h6>Update salesman</h6>
+        <label>id</label>
+        <input type="text" name="id" id="firstName" value="" />
+        <label>new first name</label>
+        <input type="text" name="firstName" id="firstName" value="" />
+        <label>new second name</label>
+        <input type="text" name="secondName" id="firstName" value="" />
+        <input type="submit" value="update" />
+    }
+</body>
